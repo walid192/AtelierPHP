@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sandwichs</title>
+  </head>
+  <body>
+    <script>
+      let Nombre_de_sandwich_restant = 13; // c'est le nombre de sandwich restant
+      if (Nombre_de_sandwich_restant <= 0) {
+        alert("pas de sandwich !!");
+      }
+    </script>
+    <form method="post" action="recap.php" enctype="multipart/form-data">
+      <fieldset>
+        <legend>Remplissez ce formulaire SVP</legend>
+        <div class="mb-3">
+          <label for="nom" class="form-label">Nom :</label>
+          <input type="text" class="form-control" name="nom" required />
+          <div id="emailHelp" class="form-text"></div>
+        </div>
+        <br />
+        <div class="mb-3">
+          <label for="prenom" class="form-label">Prenom :</label>
+          <input type="text" class="form-control" name="prenom" required />
+        </div>
+        <br />
+        <div class="mb-3">
+          <label for="Nbre_Sand">Nombre de Sandwichs</label>
+          <input type="text" class="nbre_achetes" name="Nbre_Sand" required />
+
+          <script>
+            // Injecter un script pour calculer le nombre de sandwich restant apres achat
+            let nbre_achete = document.querySelector(".nbre_achetes");
+            if (nbre_achete > Nombre_de_sandwich_restant) {
+              window.alert("pas de sandwich suffisants pour votre commande");
+            } else {
+              Nombre_de_sandwich_restant -= nbre_achete;
+            }
+          </script>
+        </div>
+        <br />
+        <div class="mb-3">
+          <label for="email">Votre email:</label>
+          <textarea
+            name="Email"
+            id="email"
+            cols="30"
+            rows="10"
+            required
+          ></textarea>
+        </div>
+        <br />
+        <div>
+          <label for="type_sand">
+            Choisissez le type de sandwich que vous voulez avoir :
+          </label>
+          <select name="type" required>
+            <option value="Viande">viande</option>
+            <option value="poulet">poulet</option>
+            <option value="Escalope">Escalope</option>
+          </select>
+        </div>
+        <br />
+        <div class="mb-3">
+          <fieldset>
+            <legend>choissiez les ingredients a ajouter :</legend>
+            <input type="checkbox" name="Harissa" />
+            <label for="Harissa">Harissa</label><br />
+
+            <input type="checkbox" name="Salade" />
+            <label for="Salade">Salade</label><br />
+
+            <input type="checkbox" name="Mayo" />
+            <label for="Mayo">Mayo</label>
+          </fieldset>
+        </div>
+        <br />
+        <div>
+          Cin:
+          <input type="file" name="cin" required />
+        </div>
+        <center>
+          <div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </center>
+      </fieldset>
+    </form>
+  </body>
+</html>
